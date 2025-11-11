@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Scroll Nav Switch</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        scroll-behavior: smooth;
+      }
+
+      section {
+        height: 100vh; /* each section takes full screen */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+      }
+
+      #home {
+        background: lightblue;
+      }
+      #about {
+        background: lightgreen;
+      }
+      #services {
+        background: lightcoral;
+      }
+      #contact {
+        background: lightgoldenrodyellow;
+      }
+
+      /* Home Nav */
+      .main-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #333;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000;
+        transition: opacity 0.3s ease;
+      }
+
+      .main-nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+
+      /* About Nav */
+      .about-nav {
+        position: fixed;
+        top: 0; /* will stick at top */
+        width: 100%;
+        background: #444;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        z-index: 1000;
+        display: none; /* hidden initially */
+        transition: opacity 0.3s ease;
+      }
+
+      .about-nav a {
+        color: white;
+        margin: 0 15px;
+        text-decoration: none;
+      }
+
+      /* Utility class */
+      .show {
+        display: block !important;
+      }
+
+      .hide {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Home Nav -->
+    <nav class="main-nav" id="homeNav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- About Nav -->
+    <nav class="about-nav" id="aboutNav">
+      <a href="#about">Overview</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Sections -->
+    <section id="home">Home Section</section>
+    <section id="about">About Section</section>
+    <section id="services">Services Section</section>
+    <section id="contact">Contact Section</section>
+
+    <script>
+      const homeSection = document.getElementById("home");
+      const aboutSection = document.getElementById("about");
+      const homeNav = document.getElementById("homeNav");
+      const aboutNav = document.getElementById("aboutNav");
+
+      window.addEventListener("scroll", () => {
+        const homeRect = homeSection.getBoundingClientRect();
+
+        // When home section is scrolled out of view
+        if (homeRect.bottom <= 0) {
+          homeNav.classList.add("hide");
+          aboutNav.classList.add("show");
+        } else {
+          homeNav.classList.remove("hide");
+          aboutNav.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>

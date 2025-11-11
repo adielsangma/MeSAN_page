@@ -1,0 +1,43 @@
+/* First Nav (fixed at top always) */
+.main-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #333;
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Second Nav (sticky inside About Section) */
+.about-nav {
+  position: sticky;
+  top: 60px; /* Push down so it comes under the first nav */
+  background: #444;
+  padding: 10px;
+  z-index: 999;
+}
+
+.about-nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-nav a {
+  color: white;
+  text-decoration: none;
+}
